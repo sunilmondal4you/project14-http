@@ -1,0 +1,97 @@
+<header-directive></header-directive>
+
+
+<div class="row" style="margin-top: 5px">
+    <div class="col-sm-3">
+
+    </div>
+    <div class="col-sm-7" style="background-color: #d6e9c6; padding: 15px; border-radius: 5px">
+        <h2>$http example with form and Routing</h2>
+        <form class="form-horizontal" name="myform" style="padding-top: 15px">
+
+            <div class="form-group">
+                <label for="name"class="col-sm-2 control-label" style="text-align: center">Fullname
+                    <span style="color: red; font-size: 20px">*</span>
+                </label>
+                <div class="col-sm-10" style="height: 45px">
+                    <input type="text" name="nm" class="form-control" id="name" placeholder="name" ng-model="applicant.name" required>
+                    <div ng-messages="myform.nm.$error" ng-if="myform.nm.$touched" style="color:maroon" role="alert">
+                        <p ng-message="required">Your name is required.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="col-sm-2 control-label" style="text-align: center">Email Id
+                    <span style="color: red; font-size: 20px">*</span>
+                </label>
+                <div class="col-sm-10" style="height: 45px">
+                    <input type="email" name="eml" class="form-control" id="email" placeholder="email" ng-model="applicant.email" required>
+                    <div ng-messages="myform.eml.$error" ng-if="myform.eml.$touched" style="color:maroon" role="alert">
+                        <p ng-message="required">Your email is required.</p>
+                        <p ng-message="email">Plese enter a valid email</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mobile" class="col-sm-2 control-label" style="text-align: center">Mobile no
+                    <span style="color: red; font-size: 20px">*</span>
+                </label>
+                <div class="col-sm-10" style="height: 45px">
+                    <input type="number" name="mbl" class="form-control" id="mobile" placeholder="mobile no" ng-model="applicant.mobile" ng-minlength="10"
+                           ng-maxlength="13" required>
+                    <div ng-messages="myform.mbl.$error" ng-if="myform.mbl.$touched" style="color:maroon" role="alert">
+                        <p ng-message="required">Your mobile number is required.</p>
+                        <p ng-message="minlength">Your mobile number is too short.</p>
+                        <p ng-message="maxlength">Your mobile number is too long.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="edu" class="col-sm-2 control-label" style="text-align: center">Education
+                    <span style="color: red; font-size: 20px">*</span>
+                </label>
+                <div class="col-sm-10" style="height: 45px">
+                    <select class="col-sm-12 form-control" name="qlf" ng-model="applicant.education" id="edu" ng-options="education for education in educationlist" required></select>
+                    <div ng-messages="myform.qlf.$error" ng-if="myform.qlf.$touched" style="color:maroon" role="alert">
+                        <p ng-message="required">Select your is Educational Qualificafion.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" style="text-align: center">Gender</label>
+                <div class="col-sm-10" style="height: 45px">
+                    <label class="radio-inline">
+                        <input type="radio" ng-model="applicant.gndr" value="male">Male
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" ng-model="applicant.gndr" value="female"> Female
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" style="text-align: center">knowladge</label>
+                <div class="col-sm-10">
+                    <label class="checkbox-inline" ng-repeat="subject in knldg">
+                        <input type="checkbox"  checklist-model="applicant.subject" checklist-value="subject">{{subject}}
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" ng-disabled="(myform.nm.$invalid) || (myform.eml.$invalid)|| (myform.mbl.$invalid) || (myform.qlf.$invalid) "
+                            class="btn btn-sm btn-info" ng-click="savedata();">Save</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="col-sm-2">
+
+    </div>
+</div>
